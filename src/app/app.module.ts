@@ -8,10 +8,11 @@ import { ActionBarComponent } from './action-bar/action-bar.component';
   declarations: [
     AppComponent,
     ActionBarComponent
+
   ],
   imports: [
     BrowserModule,
-    ActionBarComponent
+
   ],
   providers: [],
   bootstrap: [AppComponent]
