@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { ActionBarComponent } from './action-bar/action-bar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ActionBarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ActionBarComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
