@@ -1,14 +1,26 @@
 <div>
-  <button
-    class="maps-button"
-    color="primary"
-    mat-raised-button
-    [disabled]="botao.options.disable"
-    *ngFor="let botao of botoes"
-    (click)="botao.acao()">
-    <span class="align-baseline">
-      {{ botao.texto }}
-      <i class="ms-2 fas fa-sort-down"></i>
-    </span>
-  </button>
+  <ng-container *ngFor="let botao of botoes">
+    <button
+      class="maps-button"
+      color="primary"
+      mat-raised-button
+      [disabled]="botao.disable"
+      (click)="botao.fn()"
+      [matMenuTriggerFor]="botao.submenu ? subMenu : null">
+      <span class="align-baseline">
+        {{ botao.label }}
+        <i class="fa fa-caret-down" *ngIf="botao.submenu"></i>
+      </span>
+    </button>
+
+    <mat-menu #subMenu="matMenu">
+      <button 
+        mat-menu-item 
+        *ngFor="let subMenuItem of botao.submenu"
+        [disabled]="subMenuItem.disable"
+        (click)="subMenuItem.fn()">
+        {{ subMenuItem.label }}
+      </button>
+    </mat-menu>
+  </ng-container>
 </div>

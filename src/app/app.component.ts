@@ -1,40 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { Botao } from 'src/entidades/Botao';
+import { Botao } from 'src/app/action-bar/entities/action-bar.model';
+import { ActionBarService } from './services/action-bar.service';
+import { TableService } from './services/table.service'; // Importe o TableService
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
-
-  constructor() {}
+export class AppComponent {
+  constructor(
+    private readonly _servActioBar: ActionBarService,
+    private readonly _servTable: TableService
+  ) {
+    this._servTable.formValue$.subscribe((value) => {
+      this._servActioBar.selectedItems = value;
+    });
+    
+    this._servActioBar.autorizados$.subscribe((value) => {
+      this._servTable.results = value;
+    })
+  }
 
   title = 'CodeSandbox';
-  autorizarButton: Botao = new Botao('Autorizar', {
-    disable: true
-  }, () => this.autorizar());
+  botoes: Botao[] = this._servActioBar.botoes;
 
-  baixarButton: Botao = new Botao('Baixar', {
-    disable: true
-  }, () => this.autorizar());
-
-  enviarButton: Botao = new Botao('Enviar para IB', {
-    disable: true
-  }, () => this.autorizar());
-
-  botoes: Botao[] = [
-    this.autorizarButton,
-    this.baixarButton,
-    this.enviarButton,
-  ];
-
-  autorizar() {
-    console.log('autorizar');
-  }
-  onOpenedModalBaixar() {}
-  openModalEnviarIB() {}
-
-  ngOnInit(): void {
-    this.autorizarButton.options.disable = false;
-  }
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Botao } from 'src/entidades/Botao';
+import { Botao } from 'src/app/action-bar/entities/action-bar.model';
 
 @Component({
   selector: 'app-action-bar',

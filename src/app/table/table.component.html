@@ -1,0 +1,11 @@
+<br>
+<hr>
+<br>
+<form [formGroup]="form">
+    <mat-checkbox (change)="checkHandler($event.checked)" formControlName="item1">Item 1</mat-checkbox>
+    <mat-checkbox (change)="checkHandler($event.checked)" formControlName="item2">Item 2</mat-checkbox>
+</form>
+<br>
+<hr>
+<br>
+{{servTable.results$ | async}}
