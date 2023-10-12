@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Host, OnChanges, Self, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TableService } from '../services/table.service';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -10,10 +10,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class TableComponent {
   form: FormGroup;
-  
+
   constructor(
     private formBuilder: FormBuilder,
-    public  servTable: TableService) {
+    @Host() public  servTable: TableService) {
     this.form = this.formBuilder.group({
       item1: false,
       item2: false,
