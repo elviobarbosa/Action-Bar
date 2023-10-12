@@ -14,14 +14,14 @@ export class Botao {
   submenu: submenuInterface[] | null;
   fn: () => void;
 
-  constructor( 
-    label: string, 
-    options: optionsInterface = {}, 
-    fn: () => void = () => {} 
+  constructor(
+    label: string,
+    options: optionsInterface = {},
+    fn: () => void = () => {}
   ) {
       this.label = label;
       this.fn = fn;
-      this.disable = (options.disable) ? options.disable : true;
+      this.disable = (options.disable !== null &&  options.disable !== undefined) ? options.disable : true;
       this.submenu = options.submenu || null;
 
       if (this.submenu) {

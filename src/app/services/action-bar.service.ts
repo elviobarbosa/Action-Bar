@@ -23,7 +23,13 @@ export class ActionBarService {
       }
     ]
   });
-  private _baixarButton: Botao = new Botao('Baixar');
+  private _baixarButton: Botao = new Botao('Baixar', {
+    disable: false,
+    submenu: [{
+      label: 'Buu todos',
+        fn: () => this._autorizarTodos()
+    }]
+  });
   private _enviarButton: Botao = new Botao('Enviar para IB');
 
   get botoes() {
@@ -39,7 +45,7 @@ export class ActionBarService {
   }
 
   set selectedItems(items: any) {
-    this._selectedItemsSubject.next(items); 
+    this._selectedItemsSubject.next(items);
   }
 
   get selectedItems$(): Observable<string[]> {
@@ -65,8 +71,8 @@ export class ActionBarService {
   }
 
   private _autorizarTodos() {  }
-  private _autorizarSelecionados() { 
+  private _autorizarSelecionados() {
     this._autorizados.next(Object.values(this._selectedItems).find((item) => item));
   }
-  
+
 }
