@@ -6,11 +6,6 @@ import { Botao } from 'src/app/action-bar/entities/action-bar.model';
   providedIn: 'root'
 })
 export class ActionBarService {
-
-  private _selectedItemsSubject: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
-  private _selectedItems: any;
-  private _autorizados: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-
   private _autorizarButton: Botao = new Botao('Autorizar', {
     submenu: [
       {
@@ -25,6 +20,10 @@ export class ActionBarService {
   });
   private _baixarButton: Botao = new Botao('Baixar');
   private _enviarButton: Botao = new Botao('Enviar para IB');
+
+  private _selectedItemsSubject: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  private _selectedItems: any;
+  private _autorizados: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   get botoes() {
     return [
